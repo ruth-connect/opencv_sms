@@ -28,7 +28,7 @@ while (True):
         face_count = 0
         face_weight = 0
 	
-    print (str(face_count) + ' faces detected with weight ' + face_weight)
+    print (str(face_count) + ' faces detected with weight ' + str(face_weight))
 
     time.sleep(1)
     
