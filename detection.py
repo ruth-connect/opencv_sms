@@ -2,7 +2,7 @@ import cv2
 import time
 
 # load pre-trainer classifier
-classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+classifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 
 # read frame-by-frame
 frame = cv2.imread('test.jpg', 0)
