@@ -8,7 +8,7 @@ classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
 frame = cv2.imread('test.jpg', cv2.IMREAD_GRAYSCALE)
 
 # pass the frame to the classifier
-persons_detected = classifier.detectMultiScale(frame, 1.3, 5)
+persons_detected = classifier.detectMultiScale(frame, 1.0, 0)
 	
 # how many people have been detected on the frame
 try:
