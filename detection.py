@@ -16,19 +16,26 @@ while (True):
     frame = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
 
     # pass the frame to the classifier
-    faces = faceClassifier.detectMultiScale3(frame, 1.1, 3, outputRejectLevels=True)
-	
-    # how many faces have been detected on the frame
-    try:
-        face_rects = faces[0]
-        face_weights = faces[2]
-        face_count = len(face_rects)
-        face_weight = max(face_weights)
-    except:
-        face_count = 0
-        face_weight = 0
-	
-    print (str(face_count) + ' faces detected with weight ' + str(face_weight))
+    detect(frame, faceClassifier, 'faces')
+    detect(frame, upperBodyClassifier, 'upper bodies')
+    detect(frame, fullBodyClassifier, 'full bodies')
 
     time.sleep(1)
+
+def detect(frame, classifier, type):
+
+	results = classifier.detectMultiScale3(frame, 1.1, 3, outputRejectLevels=True)
+	
+	# how many faces have been detected on the frame
+	try:
+		rects = results[0]
+		weights = results[2]
+		count = len(rects)
+		weight = max(weights)
+	except:
+		count = 0
+		weight = 0
+	
+	print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
+
     
