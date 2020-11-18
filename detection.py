@@ -5,13 +5,10 @@ import time
 classifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 
 # read frame-by-frame
-frame = cv2.imread('test.jpg', 0)
-
-# set the frame to gray as we do not need color, save up the resources
-gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+frame = cv2.imread('test.jpg', cv2.IMREAD_GRAYSCALE)
 
 # pass the frame to the classifier
-persons_detected = classifier.detectMultiScale(gray_frame, 1.3, 5)
+persons_detected = classifier.detectMultiScale(frame, 1.3, 5)
 	
 # how many people have been detected on the frame
 try:
