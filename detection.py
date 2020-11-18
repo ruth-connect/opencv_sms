@@ -17,8 +17,6 @@ while (True):
 
     # pass the frame to the classifier
     faces = faceClassifier.detectMultiScale3(frame, 1.1, 3)
-    upper_bodies = upperBodyClassifier.detectMultiScale3(frame, 1.1, 3)
-    full_bodies = fullBodyClassifier.detectMultiScale3(frame, 1.1, 3)
 	
     # how many faces have been detected on the frame
     try:
