@@ -28,8 +28,9 @@ while (True):
 	
     # get image from url
     response = urllib.request.urlopen('http://192.168.1.115/mjpeg_read.php')
-    image = numpy.asarray(bytearray(response.read()), dtype="uint8")
-    frame = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
+    arr = numpy.asarray(bytearray(response.read()), dtype="uint8")
+    image = cv2.imdecode(arr, cv2.IMREAD_GRAYSCALE)
+    frame = cv2.resize(image, (320, 240))
 
     # pass the frame to the classifier
     detect(frame, faceClassifier, 'faces')
