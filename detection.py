@@ -17,7 +17,8 @@ def detect(frame, classifier, type):
 		count = 0
 		weight = 0
 	
-	print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
+	if (weight >= 4):
+	    print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
 
 # load pre-trainer classifier
 faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
