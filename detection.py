@@ -7,7 +7,7 @@ upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
 fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 
 # read frame-by-frame
-frame = cv2.imread('test.jpg', cv2.IMREAD_GRAYSCALE)
+frame = cv2.imread('http://192.168.1.115/mjpeg_read.php', cv2.IMREAD_GRAYSCALE)
 
 # pass the frame to the classifier
 faces_detected = faceClassifier.detectMultiScale(frame, 1.1, 3)
