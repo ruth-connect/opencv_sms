@@ -20,9 +20,11 @@ def detect(frame, classifier, type):
     print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
 
 # load pre-trainer classifier
-faceClassifier = cv2.CascadeClassifier('data/haarcascade_frontalface_default.xml')
-upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
-fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
+frontalFaceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+profileFaceClassifier = cv2.CascadeClassifier('./haarcascade_profileface.xml')
+upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
+lowerBodyClassifier = cv2.CascadeClassifier('./haarcascade_lowerbody.xml')
+fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
 
 while (True):
 	
@@ -32,8 +34,10 @@ while (True):
     frame = cv2.imdecode(arr, cv2.IMREAD_GRAYSCALE)
 
     # pass the frame to the classifier
-    detect(frame, faceClassifier, 'faces')
+    detect(frame, frontalFaceClassifier, 'frontal faces')
+    detect(frame, profileFaceClassifier, 'profile faces')
     detect(frame, upperBodyClassifier, 'upper bodies')
+    detect(frame, lowerBodyClassifier, 'lower bodies')
     detect(frame, fullBodyClassifier, 'full bodies')
 
     time.sleep(1)
