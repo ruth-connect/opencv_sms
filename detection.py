@@ -10,7 +10,7 @@ fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 while (True):
 	
 	# get image from url
-    response = urllib.urlopen('http://192.168.1.115/mjpeg_read.php')
+    response = urllib.request.urlopen('http://192.168.1.115/mjpeg_read.php')
     image = np.asarray(bytearray(response.read()), dtype="uint8")
     frame = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
 
