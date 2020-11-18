@@ -2,18 +2,36 @@ import cv2
 import time
 
 # load pre-trainer classifier
-classifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
+fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 
 # read frame-by-frame
 frame = cv2.imread('test.jpg', cv2.IMREAD_GRAYSCALE)
 
 # pass the frame to the classifier
-persons_detected = classifier.detectMultiScale(frame, 1.1, 3)
+faces_detected = faceClassifier.detectMultiScale(frame, 1.1, 3)
+upper_bodies_detected = upperBodyClassifier.detectMultiScale(frame, 1.1, 3)
+full_bodies_detected = fullBodyClassifier.detectMultiScale(frame, 1.1, 3)
 	
-# how many people have been detected on the frame
+# how many faces have been detected on the frame
 try:
-	human_count = persons_detected.shape[0]
+	face_count = faces_detected.shape[0]
 except:
-	human_count = 0
+	face_count = 0
+	
+# how many upper bodies have been detected on the frame
+try:
+	upper_body_count = persons_detected.shape[0]
+except:
+	upper_body_count = 0
 
-print (str(human_count) + ' humans detected')
+# how many full bodies have been detected on the frame
+try:
+	full_body_count = persons_detected.shape[0]
+except:
+	full_body_count = 0
+
+print (str(face_count) + ' faces detected')
+print (str(upper_body_count) + ' upper bodies detected')
+print (str(full_body_count) + ' full bodies detected')
