@@ -9,7 +9,7 @@ fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 while (True):
 	
     # read frame-by-frame
-    frame = cv2.imread('https://64.media.tumblr.com/18bcea114fb85d4abced1b42c53fe37c/tumblr_o0cgt8atDu1v2ia4ro1_1280.jpg', cv2.IMREAD_GRAYSCALE)
+    frame = cv2.imread('test.jpg', cv2.IMREAD_GRAYSCALE)
 
     # pass the frame to the classifier
     faces_detected = faceClassifier.detectMultiScale(frame, 1.1, 3)
