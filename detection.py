@@ -19,4 +19,4 @@ try:
 except:
 	human_count = 0
 
-print (human_count + ' humans detected')
+print (str(human_count) + ' humans detected')
