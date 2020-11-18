@@ -1,6 +1,6 @@
 import cv2
 import time
-import urllib
+import urllib.request
 
 # load pre-trainer classifier
 faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
