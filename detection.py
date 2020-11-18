@@ -16,7 +16,7 @@ while (True):
     frame = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
 
     # pass the frame to the classifier
-    faces = faceClassifier.detectMultiScale3(frame, 1.1, 3)
+    faces = faceClassifier.detectMultiScale3(frame, 1.1, 3, outputRejectLevels=True)
 	
     # how many faces have been detected on the frame
     try:
