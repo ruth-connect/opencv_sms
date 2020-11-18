@@ -19,5 +19,4 @@ try:
 except:
 	human_count = 0
 
-if (human_count > 0):
-	print ('human detected')
+print (human_count + ' humans detected')
