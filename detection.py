@@ -6,32 +6,34 @@ faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
 upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
 fullBodyClassifier = cv2.CascadeClassifier('./haarcascade_upperbody.xml')
 
-# read frame-by-frame
-frame = cv2.imread('http://192.168.1.115/mjpeg_read.php', cv2.IMREAD_GRAYSCALE)
-
-# pass the frame to the classifier
-faces_detected = faceClassifier.detectMultiScale(frame, 1.1, 3)
-upper_bodies_detected = upperBodyClassifier.detectMultiScale(frame, 1.1, 3)
-full_bodies_detected = fullBodyClassifier.detectMultiScale(frame, 1.1, 3)
+while (True):
 	
-# how many faces have been detected on the frame
-try:
-	face_count = faces_detected.shape[0]
-except:
-	face_count = 0
+    # read frame-by-frame
+    frame = cv2.imread('http://192.168.1.115/mjpeg_read.php', cv2.IMREAD_GRAYSCALE)
+
+    # pass the frame to the classifier
+    faces_detected = faceClassifier.detectMultiScale(frame, 1.1, 3)
+    upper_bodies_detected = upperBodyClassifier.detectMultiScale(frame, 1.1, 3)
+    full_bodies_detected = fullBodyClassifier.detectMultiScale(frame, 1.1, 3)
+	
+    # how many faces have been detected on the frame
+    try:
+	    face_count = faces_detected.shape[0]
+    except:
+	    face_count = 0
 	
 # how many upper bodies have been detected on the frame
-try:
-	upper_body_count = persons_detected.shape[0]
-except:
-	upper_body_count = 0
+    try:
+	    upper_body_count = persons_detected.shape[0]
+    except:
+	    upper_body_count = 0
 
-# how many full bodies have been detected on the frame
-try:
-	full_body_count = persons_detected.shape[0]
-except:
-	full_body_count = 0
+    # how many full bodies have been detected on the frame
+    try:
+    	full_body_count = persons_detected.shape[0]
+    except:
+    	full_body_count = 0
 
-print (str(face_count) + ' faces detected')
-print (str(upper_body_count) + ' upper bodies detected')
-print (str(full_body_count) + ' full bodies detected')
+    print (str(face_count) + ' faces detected')
+    print (str(upper_body_count) + ' upper bodies detected')
+    print (str(full_body_count) + ' full bodies detected')
