@@ -17,7 +17,7 @@ def detect(frame, classifier, type):
 		count = 0
 		weight = 0
 	
-	if (weight >= 3):
+	if (weight >= 2):
 	    print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
 
 # load pre-trainer classifier
