@@ -24,16 +24,19 @@ while (True):
 	
 # how many upper bodies have been detected on the frame
     try:
-	    upper_body_count = persons_detected.shape[0]
+	    upper_body_count = upper_bodies_detected.shape[0]
     except:
 	    upper_body_count = 0
 
     # how many full bodies have been detected on the frame
     try:
-    	full_body_count = persons_detected.shape[0]
+    	full_body_count = full_bodies_detected.shape[0]
     except:
     	full_body_count = 0
 
     print (str(face_count) + ' faces detected')
     print (str(upper_body_count) + ' upper bodies detected')
     print (str(full_body_count) + ' full bodies detected')
+
+    time.sleep(1)
+    
