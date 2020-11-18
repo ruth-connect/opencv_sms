@@ -1,6 +1,7 @@
 import cv2
 import time
 import urllib.request
+import numpy
 
 # load pre-trainer classifier
 faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
@@ -11,7 +12,7 @@ while (True):
 	
 	# get image from url
     response = urllib.request.urlopen('http://192.168.1.115/mjpeg_read.php')
-    image = np.asarray(bytearray(response.read()), dtype="uint8")
+    image = numpy.asarray(bytearray(response.read()), dtype="uint8")
     frame = cv2.imdecode(image, cv2.IMREAD_GRAYSCALE)
 
     # pass the frame to the classifier
