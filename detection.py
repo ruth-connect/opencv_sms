@@ -3,6 +3,22 @@ import time
 import urllib.request
 import numpy
 
+def detect(frame, classifier, type):
+
+	results = classifier.detectMultiScale3(frame, 1.1, 3, outputRejectLevels=True)
+	
+	# how many faces have been detected on the frame
+	try:
+		rects = results[0]
+		weights = results[2]
+		count = len(rects)
+		weight = max(weights)
+	except:
+		count = 0
+		weight = 0
+	
+	print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
+
 # load pre-trainer classifier
 faceClassifier = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
 upperBodyClassifier = cv2.CascadeClassifier('./haarcascade_fullbody.xml')
@@ -21,21 +37,4 @@ while (True):
     detect(frame, fullBodyClassifier, 'full bodies')
 
     time.sleep(1)
-
-def detect(frame, classifier, type):
-
-	results = classifier.detectMultiScale3(frame, 1.1, 3, outputRejectLevels=True)
-	
-	# how many faces have been detected on the frame
-	try:
-		rects = results[0]
-		weights = results[2]
-		count = len(rects)
-		weight = max(weights)
-	except:
-		count = 0
-		weight = 0
-	
-	print (str(count) + ' ' + type + ' detected with weight ' + str(weight))
-
     
